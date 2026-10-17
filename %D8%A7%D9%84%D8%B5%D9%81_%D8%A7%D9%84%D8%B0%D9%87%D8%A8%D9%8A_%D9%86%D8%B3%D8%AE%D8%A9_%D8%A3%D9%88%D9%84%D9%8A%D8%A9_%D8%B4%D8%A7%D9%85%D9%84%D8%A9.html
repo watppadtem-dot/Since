@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111111">
+<title>الصف الذهبي</title>
+<style>
+:root{--bg:#101114;--panel:#1b1d22;--panel2:#24262d;--gold:#d7b45b;--gold2:#f0d88e;--text:#f7f7f7;--muted:#b8bac3;--line:#393b43;--blue:#6da9e8;--green:#80c89a;--red:#e77f83}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.55}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:9px;padding:10px 13px;background:var(--gold);color:#17140b;font-weight:700}button:disabled{opacity:.5;cursor:not-allowed}.secondary{background:#30333b;color:var(--text);border:1px solid #50535d}.danger{background:#7d3037;color:white}.good{background:#24583b;color:white}.blue{background:#264b72;color:white}.small{padding:6px 9px;font-size:13px}.top{padding:20px 15px 16px;background:linear-gradient(135deg,#191817,#252117);border-bottom:2px solid var(--gold);text-align:center}.top h1{margin:0;color:var(--gold);font-size:27px}.top p{margin:5px 0;color:var(--muted)}.wrap{max-width:1100px;margin:auto;padding:14px}.nav{display:flex;gap:7px;overflow:auto;padding:9px 0 13px;position:sticky;top:0;background:var(--bg);z-index:5}.nav button{white-space:nowrap;flex:0 0 auto}.nav button.active{background:var(--gold2);box-shadow:0 0 0 2px #7c642b}.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.card,.section{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:14px;margin-bottom:12px;min-width:0}.stat{font-size:28px;color:var(--gold);font-weight:bold}.muted{color:var(--muted)}h2{font-size:20px;color:var(--gold);margin:4px 0 12px}h3{font-size:16px;margin:3px 0 10px}label{display:block;margin:10px 0 5px;color:#e5e5e5;font-size:14px}input,select,textarea{width:100%;min-width:0;padding:10px;border:1px solid #484b55;background:#111216;color:white;border-radius:8px}textarea{min-height:76px;resize:vertical}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.actions>*{flex:1}.item{border-bottom:1px solid var(--line);padding:12px 0}.item:last-child{border-bottom:0}.itemtitle{font-weight:bold;color:var(--gold)}.pill{display:inline-block;border:1px solid #5c5130;color:var(--gold2);border-radius:30px;padding:2px 8px;font-size:12px;margin:2px}.empty{text-align:center;color:var(--muted);padding:18px}.notice{padding:10px 12px;border-radius:9px;background:#29271e;border:1px solid #65552b;color:#f0d88e;font-size:13px;margin:10px 0}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:560px}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}th{color:var(--gold2);background:#24221b}.checkrow{display:flex;align-items:center;gap:8px}.checkrow input{width:auto}.footer{text-align:center;color:var(--muted);padding:18px;font-size:12px}.hidden{display:none!important}.rating-buttons{display:flex;gap:5px;flex-wrap:wrap}.rating-buttons button{flex:1;min-width:45px}.rating-buttons button.chosen{outline:2px solid white;background:var(--gold2)}.bar{height:8px;background:#34363c;border-radius:20px;overflow:hidden}.bar span{display:block;height:100%;background:var(--gold)}.split{display:flex;justify-content:space-between;align-items:center;gap:8px}.dangertext{color:var(--red)}@media(min-width:760px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.formgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.wrap{padding:20px}}@media print{body{background:white;color:black}.top,.nav,.no-print,button{display:none!important}.page{display:none!important}.page.active{display:block!important}.card,.section{background:white;color:black;border:1px solid #aaa;break-inside:avoid}.muted{color:#333}table{min-width:0}th,td{color:black;background:white}}
+</style>
+</head>
+<body>
+<header class="top">
+<h1>✦ الصف الذهبي ✦</h1><p>اقرأ يزيدني علمًا</p><p>إعداد الأستاذ علي عبد الله الغزي</p>
+</header>
+<div class="wrap">
+<nav class="nav no-print" id="nav">
+<button class="active" data-page="home">الرئيسية</button>
+<button data-page="students">التلاميذ</button>
+<button data-page="attendance">الحضور</button>
+<button data-page="ratings">التقييم</button>
+<button data-page="lessons">الدروس والتحضير</button>
+<button data-page="homework">الواجبات</button>
+<button data-page="exams">الامتحانات</button>
+<button data-page="reports">التقارير وفارس الصف</button>
+<button data-page="backup">النسخ الاحتياطي</button>
+</nav>
+
+<section id="home" class="page active">
+<h2>لوحة التحكم</h2>
+<div class="grid">
+<div class="card"><div class="muted">عدد التلاميذ</div><div class="stat" id="statStudents">0</div></div>
+<div class="card"><div class="muted">حاضرون اليوم</div><div class="stat" id="statPresent">0</div></div>
+<div class="card"><div class="muted">سجلات التقييم</div><div class="stat" id="statRatings">0</div></div>
+<div class="card"><div class="muted">الواجبات المسجلة</div><div class="stat" id="statHomework">0</div></div>
+</div>
+<div class="section"><h3>إجراءات سريعة</h3><div class="actions">
+<button onclick="go('students')">＋ إضافة تلميذ</button><button onclick="go('attendance')">تسجيل الحضور</button><button onclick="go('ratings')">تقييم اليوم</button><button class="secondary" onclick="go('backup')">نسخة احتياطية</button>
+</div></div>
+<div class="section"><h3>أعياد الميلاد القادمة</h3><div id="birthdays"></div></div>
+<div class="section"><h3>تنبيهات عامة</h3><div id="homeNotices" class="muted">لا توجد تنبيهات.</div></div>
+<div class="notice">تنبيه: البيانات محفوظة محليًا في مساحة تخزين المتصفح على هذا الجهاز. صدّر نسخة احتياطية بانتظام، ولا تعتمد على هذا الملف وحده لحفظ سجلات المدرسة.</div>
+</section>
+
+<section id="students" class="page">
+<h2>إدارة التلاميذ</h2>
+<div class="section">
+<h3 id="studentFormTitle">إضافة تلميذ</h3>
+<form id="studentForm">
+<input type="hidden" id="studentId">
+<div class="formgrid">
+<div><label>الاسم الكامل *</label><input id="sName" required maxlength="100"></div>
+<div><label>الصف</label><select id="sGrade"><option>الأول الابتدائي</option><option>الثاني الابتدائي</option><option>الثالث الابتدائي</option><option>الرابع الابتدائي</option><option>الخامس الابتدائي</option><option selected>السادس الابتدائي</option></select></div>
+<div><label>الشعبة</label><input id="sClass" maxlength="30" placeholder="أ"></div>
+<div><label>تاريخ الميلاد</label><input id="sBirth" type="date"></div>
+<div><label>اسم ولي الأمر</label><input id="sGuardian" maxlength="100"></div>
+<div><label>هاتف ولي الأمر</label><input id="sPhone" type="tel" maxlength="30" placeholder="رقم مع مفتاح الدولة للواتساب"></div>
+<div><label>ملاحظات صحية سرية</label><textarea id="sHealth" placeholder="اختياري؛ لا تدخل معلومات لا تحتاجها"></textarea></div>
+<div><label>الاهتمامات/الجانب الثقافي</label><textarea id="sCulture"></textarea></div>
+<div><label>المهارات والمواهب</label><textarea id="sSkills"></textarea></div>
+<div><label>ملاحظات عامة</label><textarea id="sNotes"></textarea></div>
+</div>
+<div class="actions"><button type="submit">حفظ بيانات التلميذ</button><button type="button" class="secondary" id="studentCancel">إلغاء</button></div>
+</form>
+</div>
+<div class="section"><div class="split"><h3>قائمة التلاميذ</h3><span id="studentCount" class="pill">0</span></div>
+<label>بحث بالاسم أو الصف أو الشعبة</label><input id="studentSearch" placeholder="اكتب اسم التلميذ...">
+<div id="studentsList"></div></div>
+</section>
+
+<section id="attendance" class="page">
+<h2>الحضور والغياب والتأخر</h2>
+<div class="section">
+<div class="formgrid"><div><label>التاريخ</label><input type="date" id="attDate"></div><div><label>تصفية الصف</label><select id="attGrade"><option value="">كل الصفوف</option><option>الأول الابتدائي</option><option>الثاني الابتدائي</option><option>الثالث الابتدائي</option><option>الرابع الابتدائي</option><option>الخامس الابتدائي</option><option>السادس الابتدائي</option></select></div><div><label>تصفية الشعبة (اختياري)</label><input id="attClass" placeholder="اتركها فارغة للكل"></div></div>
+<div class="actions"><button id="markAllPresent">تحديد الجميع حاضر</button><button class="secondary" id="saveAttendance">حفظ الحضور المحدد</button></div>
+<div id="attendanceList"></div>
+</div>
+<div class="section"><h3>ملخص اليوم</h3><div id="attendanceSummary"></div></div>
+</section>
+
+<section id="ratings" class="page">
+<h2>التقييم اليومي</h2>
+<div class="section">
+<div class="formgrid"><div><label>التاريخ</label><input type="date" id="rateDate"></div><div><label>التلميذ</label><select id="rateStudent"></select></div></div>
+<p class="muted">اختر درجة من 1 إلى 5 لكل محور. المحور الذي تتركه بلا اختيار لا يدخل في المتوسط.</p>
+<div id="ratingFields"></div>
+<label>ملاحظات التقييم</label><textarea id="rateNotes"></textarea>
+<div class="actions"><button id="saveRating">حفظ التقييم</button><button class="secondary" id="clearRating">مسح الاختيارات</button></div>
+</div>
+<div class="section"><h3>سجل التقييمات</h3><div id="ratingsList"></div></div>
+</section>
+
+<section id="lessons" class="page">
+<h2>الدروس والتحضير</h2>
+<div class="section"><h3>إضافة درس أو تحضير</h3>
+<form id="lessonForm"><input type="hidden" id="lessonId">
+<div class="formgrid"><div><label>التاريخ</label><input id="lDate" type="date" required></div><div><label>الصف</label><select id="lGrade"><option>الأول الابتدائي</option><option>الثاني الابتدائي</option><option>الثالث الابتدائي</option><option>الرابع الابتدائي</option><option>الخامس الابتدائي</option><option selected>السادس الابتدائي</option></select></div><div><label>عنوان الدرس *</label><input id="lTitle" required maxlength="150"></div><div><label>المادة</label><input id="lSubject" value="العلوم"></div><div><label>أهداف الدرس</label><textarea id="lGoals"></textarea></div><div><label>الوسائل/خطوات التحضير</label><textarea id="lPlan"></textarea></div><div><label>ملاحظات</label><textarea id="lNotes"></textarea></div></div>
+<div class="actions"><button>حفظ الدرس</button><button type="button" class="secondary" id="lessonCancel">إلغاء</button></div></form></div>
+<div class="section"><h3>الدروس المسجلة</h3><div id="lessonsList"></div></div>
+</section>
+
+<section id="homework" class="page">
+<h2>الواجبات المنزلية</h2>
+<div class="section"><h3>إضافة واجب</h3><form id="homeworkForm"><input type="hidden" id="hwId">
+<div class="formgrid"><div><label>عنوان الواجب *</label><input id="hwTitle" required></div><div><label>المادة</label><input id="hwSubject" value="العلوم"></div><div><label>تاريخ التكليف</label><input id="hwDate" type="date" required></div><div><label>موعد التسليم</label><input id="hwDue" type="date"></div><div><label>الصف</label><select id="hwGrade"><option>الأول الابتدائي</option><option>الثاني الابتدائي</option><option>الثالث الابتدائي</option><option>الرابع الابتدائي</option><option>الخامس الابتدائي</option><option selected>السادس الابتدائي</option></select></div><div><label>التفاصيل</label><textarea id="hwDetails"></textarea></div></div><div class="actions"><button>حفظ الواجب</button><button type="button" class="secondary" id="hwCancel">إلغاء</button></div></form></div>
+<div class="section"><h3>الواجبات المسجلة</h3><div id="homeworkList"></div></div>
+</section>
+
+<section id="exams" class="page">
+<h2>الامتحانات والدرجات</h2>
+<div class="section"><h3>إضافة امتحان</h3><form id="examForm"><input type="hidden" id="examId">
+<div class="formgrid"><div><label>اسم الامتحان *</label><input id="eTitle" required></div><div><label>المادة</label><input id="eSubject" value="العلوم"></div><div><label>التاريخ</label><input id="eDate" type="date" required></div><div><label>الدرجة الكلية</label><input id="eMax" type="number" min="1" max="1000" value="100" required></div><div><label>الصف</label><select id="eGrade"><option>الأول الابتدائي</option><option>الثاني الابتدائي</option><option>الثالث الابتدائي</option><option>الرابع الابتدائي</option><option>الخامس الابتدائي</option><option selected>السادس الابتدائي</option></select></div><div><label>ملاحظات</label><textarea id="eNotes"></textarea></div></div><div class="actions"><button>حفظ الامتحان</button><button type="button" class="secondary" id="examCancel">إلغاء</button></div></form></div>
+<div class="section"><h3>الامتحانات المسجلة</h3><div id="examsList"></div></div>
+<div class="section"><h3>تسجيل درجات امتحان</h3><label>اختر الامتحان</label><select id="scoreExam"></select><div id="scoresArea"></div></div>
+</section>
+
+<section id="reports" class="page">
+<h2>التقارير وفارس الصف</h2>
+<div class="section"><h3>فارس الصف</h3><p class="muted">يُحتسب ترتيب مبسط من متوسط التقييمات المسجلة، وليس من الدرجات الأكاديمية أو الحضور وحدهما.</p><div id="champions"></div></div>
+<div class="section"><h3>تقرير التلميذ</h3><label>اختر التلميذ</label><select id="reportStudent"></select><div class="actions"><button id="showStudentReport">عرض التقرير</button><button class="secondary" onclick="window.print()">طباعة / حفظ PDF</button><button class="secondary" id="exportCsv">تصدير قائمة التلاميذ CSV</button></div><div id="studentReport"></div></div>
+<div class="section"><h3>ملخص الحضور</h3><div id="attendanceReport"></div></div>
+</section>
+
+<section id="backup" class="page">
+<h2>النسخ الاحتياطي والإعدادات</h2>
+<div class="notice">احفظ نسخة JSON بانتظام في مجلد تعرفه. لا تشاركها علنًا؛ فقد تحتوي على بيانات أطفال ومعلومات أسرية أو صحية.</div>
+<div class="section"><h3>النسخ الاحتياطي</h3><div class="actions"><button id="backupExport">تصدير جميع البيانات JSON</button><button class="secondary" id="backupImportBtn">استعادة نسخة JSON</button><input type="file" id="backupFile" accept=".json,application/json" hidden></div><p class="muted">الاستعادة تستبدل بيانات التطبيق الحالية. صدّر نسخة حديثة قبل الاستعادة.</p></div>
+<div class="section"><h3>إعدادات المدرسة</h3><label>اسم المدرسة</label><input id="schoolName" value="مدرسة الأنفال الابتدائية"><label>ملاحظات الإعدادات</label><textarea id="settingsNotes"></textarea><div class="actions"><button id="saveSettings">حفظ الإعدادات</button><button class="danger" id="clearAll">مسح جميع البيانات</button></div></div>
+<div class="section"><h3>معلومات التخزين</h3><p id="storageInfo" class="muted"></p></div>
+</section>
+<div class="footer">الصف الذهبي — نموذج محلي أولي. راجع النسخ الاحتياطية واختبر جميع الوظائف قبل الاستخدام المدرسي الفعلي.</div>
+</div>
+
+<script>
+"use strict";
+const KEY="golden_class_complete_v1";
+const axes=["الحضور والانضباط","السلوك","الواجب","الدفتر والكتاب","المشاركة"];
+const labels={5:"ممتاز",4:"جيد جدًا",3:"متوسط",2:"ضعيف",1:"سيئ"};
+const today=()=>new Date().toISOString().slice(0,10);
+const uid=()=> (crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2));
+const el=id=>document.getElementById(id);
+let db={students:[],attendance:[],ratings:[],lessons:[],homework:[],exams:[],scores:[],settings:{schoolName:"مدرسة الأنفال الابتدائية",notes:""}};
+let pendingAttendance={};
+let ratingValues={};
+function persist(){
+ try{localStorage.setItem(KEY,JSON.stringify(db));el("storageInfo").textContent="تم الحفظ محليًا. آخر حفظ: "+new Date().toLocaleString("ar-IQ");return true}
+ catch(e){alert("فشل الحفظ المحلي. قد تكون مساحة التخزين ممتلئة أو غير متاحة. صدّر نسخة احتياطية إن أمكن.");return false}
+}
+function load(){
+ try{const raw=localStorage.getItem(KEY);if(raw){const parsed=JSON.parse(raw);for(const k of Object.keys(db)){if(k==="settings")db.settings={...db.settings,...(parsed.settings||{})};else if(Array.isArray(parsed[k]))db[k]=parsed[k]}}}
+ catch(e){alert("تعذرت قراءة البيانات المحفوظة. لا تمسح بيانات التطبيق قبل محاولة استعادة نسخة احتياطية.")}
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function dateFmt(d){if(!d)return "—";return d}
+function go(page){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===page));document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));refresh();window.scrollTo(0,0)}
+document.querySelectorAll("#nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
+function studentById(id){return db.students.find(s=>s.id===id)}
+function selectOptions(id,selected="",emptyLabel="اختر"){
+ const s=el(id);if(!s)return;s.replaceChildren();const o=document.createElement("option");o.value="";o.textContent=emptyLabel;s.appendChild(o);
+ db.students.slice().sort((a,b)=>a.name.localeCompare(b.name,"ar")).forEach(st=>{const op=document.createElement("option");op.value=st.id;op.textContent=st.name+" — "+st.classroom;op.selected=st.id===selected;s.appendChild(op)})
+}
+function itemActions(type,id){return `<div class="actions no-print"><button class="secondary small" data-edit="${type}" data-id="${esc(id)}">تعديل</button><button class="danger small" data-delete="${type}" data-id="${esc(id)}">حذف</button></div>`}
+function bindItemActions(root=document){
+ root.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>editItem(b.dataset.edit,b.dataset.id));
+ root.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>deleteItem(b.dataset.delete,b.dataset.id));
+}
+function renderStudents(){
+ const q=el("studentSearch").value.trim().toLocaleLowerCase("ar");const list=el("studentsList");
+ const arr=db.students.filter(s=>[s.name,s.grade,s.classroom,s.guardian].some(v=>String(v||"").toLocaleLowerCase("ar").includes(q))).sort((a,b)=>a.name.localeCompare(b.name,"ar"));
+ el("studentCount").textContent=db.students.length+" تلميذ";
+ list.innerHTML=arr.length?arr.map(s=>`<div class="item"><div class="itemtitle">${esc(s.name)}</div><span class="pill">${esc(s.grade)}</span><span class="pill">الشعبة ${esc(s.classroom||"—")}</span><div class="muted">الميلاد: ${esc(s.birth||"—")} | ولي الأمر: ${esc(s.guardian||"—")} | الهاتف: ${esc(s.phone||"—")}</div>${s.notes?`<p>${esc(s.notes)}</p>`:""}<details><summary>تفاصيل إضافية</summary><p>ملاحظات صحية: ${esc(s.health||"—")}</p><p>اهتمامات ثقافية: ${esc(s.culture||"—")}</p><p>مهارات: ${esc(s.skills||"—")}</p></details><div class="actions no-print"><button class="secondary small" data-edit="student" data-id="${esc(s.id)}">تعديل</button><button class="danger small" data-delete="student" data-id="${esc(s.id)}">حذف</button>${s.phone?`<button class="good small" data-wa="${esc(s.id)}">واتساب</button>`:""}</div></div>`).join(""):'<div class="empty">لا يوجد تلاميذ مطابقون.</div>';
+ bindItemActions(list);
+ list.querySelectorAll("[data-wa]").forEach(b=>b.onclick=()=>whatsapp(b.dataset.wa));
+}
+function resetStudentForm(){el("studentForm").reset();el("studentId").value="";el("studentFormTitle").textContent="إضافة تلميذ";el("studentCancel").textContent="مسح الحقول"}
+el("studentForm").addEventListener("submit",e=>{
+ e.preventDefault();const id=el("studentId").value;const old=studentById(id);
+ const s={id:id||uid(),name:el("sName").value.trim(),grade:el("sGrade").value,classroom:el("sClass").value.trim(),birth:el("sBirth").value,guardian:el("sGuardian").value.trim(),phone:el("sPhone").value.trim(),health:el("sHealth").value.trim(),culture:el("sCulture").value.trim(),skills:el("sSkills").value.trim(),notes:el("sNotes").value.trim(),createdAt:old?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};
+ if(!s.name)return alert("اكتب اسم التلميذ.");
+ const previous=db.students;db.students=id?db.students.map(x=>x.id===id?s:x):[...db.students,s];
+ if(!persist()){db.students=previous;return}resetStudentForm();refresh();
+});
+el("studentCancel").onclick=resetStudentForm;
+el("studentSearch").oninput=renderStudents;
+function whatsapp(id){const s=studentById(id);if(!s?.phone)return alert("لا يوجد رقم هاتف مسجل.");let num=s.phone.replace(/[^\d+]/g,"").replace(/^\+/,"");if(num.startsWith("00"))num=num.slice(2);const msg=encodeURIComponent("السلام عليكم، ولي أمر التلميذ "+s.name+"، تحية طيبة من مدرسة الأنفال الابتدائية.");window.open("https://wa.me/"+num+"?text="+msg,"_blank")}
+function renderAttendance(){
+ const date=el("attDate").value||today(),grade=el("attGrade").value,cl=el("attClass").value.trim();
+ const students=db.students.filter(s=>(!grade||s.grade===grade)&&(!cl||s.classroom===cl)).sort((a,b)=>a.name.localeCompare(b.name,"ar"));
+ const existing=new Map(db.attendance.filter(a=>a.date===date).map(a=>[a.studentId,a.status]));
+ el("attendanceList").innerHTML=students.length?students.map(s=>{const status=pendingAttendance[s.id]||existing.get(s.id)||"حاضر";return `<div class="item"><div class="split"><strong>${esc(s.name)}</strong><span class="muted">${esc(s.classroom||"")}</span></div><label>الحالة</label><select data-att="${esc(s.id)}"><option ${status==="حاضر"?"selected":""}>حاضر</option><option ${status==="غائب"?"selected":""}>غائب</option><option ${status==="متأخر"?"selected":""}>متأخر</option><option ${status==="إجازة"?"selected":""}>إجازة</option></select></div>`}).join(""):'<div class="empty">أضف التلاميذ أولًا أو غيّر التصفية.</div>';
+ el("attendanceList").querySelectorAll("[data-att]").forEach(s=>s.onchange=()=>pendingAttendance[s.dataset.att]=s.value);
+ const day=db.attendance.filter(a=>a.date===date);const counts={"حاضر":0,"غائب":0,"متأخر":0,"إجازة":0};day.forEach(a=>counts[a.status]=(counts[a.status]||0)+1);
+ el("attendanceSummary").innerHTML=Object.entries(counts).map(([k,v])=>`<span class="pill">${k}: ${v}</span>`).join("")+`<p class="muted">عدد السجلات المحفوظة لهذا التاريخ: ${day.length}</p>`;
+}
+el("attDate").value=today();el("attDate").onchange=()=>{pendingAttendance={};renderAttendance()};el("attGrade").onchange=renderAttendance;el("attClass").oninput=renderAttendance;
+el("markAllPresent").onclick=()=>{el("attendanceList").querySelectorAll("[data-att]").forEach(s=>{s.value="حاضر";pendingAttendance[s.dataset.att]="حاضر"})};
+el("saveAttendance").onclick=()=>{const date=el("attDate").value;if(!date)return alert("اختر التاريخ.");const selects=[...el("attendanceList").querySelectorAll("[data-att]")];if(!selects.length)return alert("لا توجد أسماء للحفظ.");const next=db.attendance.filter(a=>!(a.date===date&&selects.some(s=>s.dataset.att===a.studentId)));selects.forEach(s=>next.push({id:uid(),studentId:s.dataset.att,date,status:s.value}));const prev=db.attendance;db.attendance=next;if(!persist()){db.attendance=prev;return}pendingAttendance={};renderAttendance();alert("تم حفظ الحضور.")};
+function renderRatingFields(){el("ratingFields").innerHTML=axes.map((a,i)=>`<div class="item"><strong>${a}</strong><div class="rating-buttons">${[1,2,3,4,5].map(n=>`<button type="button" class="secondary ${ratingValues[i]===n?"chosen":""}" data-axis="${i}" data-val="${n}">${n}<br><small>${labels[n]}</small></button>`).join("")}</div></div>`).join("");el("ratingFields").querySelectorAll("[data-axis]").forEach(b=>b.onclick=()=>{ratingValues[+b.dataset.axis]=+b.dataset.val;renderRatingFields()})}
+el("rateDate").value=today();el("rateDate").onchange=()=>loadRatingForForm();el("rateStudent").onchange=loadRatingForForm;
+function loadRatingForForm(){ratingValues={};const id=el("rateStudent").value,date=el("rateDate").value;const r=db.ratings.find(x=>x.studentId===id&&x.date===date);if(r){ratingValues=r.values||{};el("rateNotes").value=r.notes||""}else el("rateNotes").value="";renderRatingFields()}
+el("saveRating").onclick=()=>{const studentId=el("rateStudent").value,date=el("rateDate").value;if(!studentId)return alert("اختر التلميذ.");if(!date)return alert("اختر التاريخ.");if(!Object.keys(ratingValues).length)return alert("اختر درجة لمحور واحد على الأقل.");const values={...ratingValues};const old=db.ratings.find(x=>x.studentId===studentId&&x.date===date);const record={id:old?.id||uid(),studentId,date,values,notes:el("rateNotes").value.trim()};const prev=db.ratings;db.ratings=old?db.ratings.map(x=>x.id===old.id?record:x):[...db.ratings,record];if(!persist()){db.ratings=prev;return}renderRatings();alert("تم حفظ التقييم.")};
+el("clearRating").onclick=()=>{ratingValues={};el("rateNotes").value="";renderRatingFields()};
+function average(values){const nums=Object.values(values||{}).map(Number).filter(n=>n>=1&&n<=5);return nums.length?nums.reduce((a,b)=>a+b,0)/nums.length:null}
+function renderRatings(){const root=el("ratingsList");const arr=db.ratings.slice().sort((a,b)=>b.date.localeCompare(a.date));root.innerHTML=arr.length?arr.map(r=>{const s=studentById(r.studentId);return `<div class="item"><div class="itemtitle">${esc(s?.name||"تلميذ محذوف")} — ${esc(r.date)}</div><div>${axes.map((a,i)=>r.values?.[i]?`<span class="pill">${a}: ${r.values[i]} (${labels[r.values[i]]})</span>`:"").join("")}</div><p>المتوسط: ${average(r.values)===null?"—":average(r.values).toFixed(2)} ${r.notes?" | "+esc(r.notes):""}</p>${itemActions("rating",r.id)}</div>`}).join(""):'<div class="empty">لا توجد تقييمات مسجلة.</div>';bindItemActions(root)}
+function resetLesson(){el("lessonForm").reset();el("lessonId").value="";el("lDate").value=today();el("lSubject").value="العلوم"}
+el("lDate").value=today();el("lessonForm").onsubmit=e=>{e.preventDefault();const id=el("lessonId").value;const rec={id:id||uid(),date:el("lDate").value,grade:el("lGrade").value,title:el("lTitle").value.trim(),subject:el("lSubject").value.trim(),goals:el("lGoals").value.trim(),plan:el("lPlan").value.trim(),notes:el("lNotes").value.trim()};if(!rec.title)return alert("اكتب عنوان الدرس.");const prev=db.lessons;db.lessons=id?db.lessons.map(x=>x.id===id?rec:x):[rec,...db.lessons];if(!persist()){db.lessons=prev;return}resetLesson();renderLessons()};
+el("lessonCancel").onclick=resetLesson;
+function renderLessons(){const root=el("lessonsList");root.innerHTML=db.lessons.length?db.lessons.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(x=>`<div class="item"><div class="itemtitle">${esc(x.title)}</div><span class="pill">${esc(x.date)}</span><span class="pill">${esc(x.grade)}</span><span class="pill">${esc(x.subject)}</span><p>الأهداف: ${esc(x.goals||"—")}</p><p>التحضير: ${esc(x.plan||"—")}</p><p>ملاحظات: ${esc(x.notes||"—")}</p>${itemActions("lesson",x.id)}</div>`).join(""):'<div class="empty">لا توجد دروس.</div>';bindItemActions(root)}
+function resetHomework(){el("homeworkForm").reset();el("hwId").value="";el("hwDate").value=today();el("hwSubject").value="العلوم"}
+el("hwDate").value=today();el("homeworkForm").onsubmit=e=>{e.preventDefault();const id=el("hwId").value;const rec={id:id||uid(),title:el("hwTitle").value.trim(),subject:el("hwSubject").value.trim(),date:el("hwDate").value,due:el("hwDue").value,grade:el("hwGrade").value,details:el("hwDetails").value.trim()};const prev=db.homework;db.homework=id?db.homework.map(x=>x.id===id?rec:x):[rec,...db.homework];if(!persist()){db.homework=prev;return}resetHomework();renderHomework()};
+el("hwCancel").onclick=resetHomework;
+function renderHomework(){const root=el("homeworkList");root.innerHTML=db.homework.length?db.homework.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(x=>`<div class="item"><div class="itemtitle">${esc(x.title)}</div><span class="pill">${esc(x.subject)}</span><span class="pill">${esc(x.grade)}</span><p>التكليف: ${esc(x.date)} | التسليم: ${esc(x.due||"غير محدد")}</p><p>${esc(x.details||"لا توجد تفاصيل")}</p>${itemActions("homework",x.id)}</div>`).join(""):'<div class="empty">لا توجد واجبات.</div>';bindItemActions(root)}
+function resetExam(){el("examForm").reset();el("examId").value="";el("eDate").value=today();el("eSubject").value="العلوم";el("eMax").value=100}
+el("eDate").value=today();el("examForm").onsubmit=e=>{e.preventDefault();const id=el("examId").value;const rec={id:id||uid(),title:el("eTitle").value.trim(),subject:el("eSubject").value.trim(),date:el("eDate").value,max:Number(el("eMax").value),grade:el("eGrade").value,notes:el("eNotes").value.trim()};if(!rec.title||!Number.isFinite(rec.max)||rec.max<=0)return alert("تحقق من اسم الامتحان والدرجة الكلية.");const prev=db.exams;db.exams=id?db.exams.map(x=>x.id===id?rec:x):[rec,...db.exams];if(!persist()){db.exams=prev;return}resetExam();renderExams()};
+el("examCancel").onclick=resetExam;
+function renderExams(){const root=el("examsList");root.innerHTML=db.exams.length?db.exams.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(x=>`<div class="item"><div class="itemtitle">${esc(x.title)}</div><span class="pill">${esc(x.subject)}</span><span class="pill">${esc(x.date)}</span><span class="pill">من ${esc(x.max)}</span><p>${esc(x.grade)} — ${esc(x.notes||"")}</p>${itemActions("exam",x.id)}<button class="blue small no-print" data-score-exam="${esc(x.id)}">إدخال الدرجات</button></div>`).join(""):'<div class="empty">لا توجد امتحانات.</div>';bindItemActions(root);root.querySelectorAll("[data-score-exam]").forEach(b=>b.onclick=()=>{el("scoreExam").value=b.dataset.scoreExam;renderScores();el("scoresArea").scrollIntoView({behavior:"smooth",block:"start"})});const select=el("scoreExam"),current=select.value;select.innerHTML='<option value="">اختر امتحانًا</option>'+db.exams.map(x=>`<option value="${esc(x.id)}">${esc(x.title)} — ${esc(x.date)}</option>`).join("");if(db.exams.some(x=>x.id===current))select.value=current;renderScores()}
+el("scoreExam").onchange=renderScores;
+function renderScores(){const exam=db.exams.find(x=>x.id===el("scoreExam").value);const root=el("scoresArea");if(!exam){root.innerHTML='<div class="empty">اختر امتحانًا لإدخال الدرجات.</div>';return}const students=db.students.filter(s=>s.grade===exam.grade).sort((a,b)=>a.name.localeCompare(b.name,"ar"));root.innerHTML=students.length?`<p class="muted">${esc(exam.title)} — الدرجة الكلية ${exam.max}</p>${students.map(s=>{const old=db.scores.find(x=>x.examId===exam.id&&x.studentId===s.id);return `<div class="item"><div class="split"><strong>${esc(s.name)}</strong><span class="muted">${old?`المحفوظ: ${old.score}`:"لم تسجل درجة"}</span></div><label>الدرجة من ${exam.max}</label><input type="number" min="0" max="${exam.max}" step="0.25" data-score-student="${esc(s.id)}" value="${old?esc(old.score):""}" placeholder="الدرجة"></div>`}).join("")}<button id="saveScores">حفظ جميع الدرجات الظاهرة</button>`:'<div class="empty">لا يوجد تلاميذ في صف هذا الامتحان.</div>';const btn=el("saveScores");if(btn)btn.onclick=()=>{const inputs=[...root.querySelectorAll("[data-score-student]")];const next=db.scores.filter(x=>x.examId!==exam.id);for(const input of inputs){if(input.value.trim()==="")continue;const score=Number(input.value);if(!Number.isFinite(score)||score<0||score>exam.max)return alert("توجد درجة غير صحيحة. يجب أن تكون بين صفر والدرجة الكلية.");next.push({id:uid(),examId:exam.id,studentId:input.dataset.scoreStudent,score})}const prev=db.scores;db.scores=next;if(!persist()){db.scores=prev;return}renderScores();alert("تم حفظ الدرجات.")}}
+function championData(){return db.students.map(s=>{const rs=db.ratings.filter(r=>r.studentId===s.id).map(r=>average(r.values)).filter(v=>v!==null);return {student:s,avg:rs.length?rs.reduce((a,b)=>a+b,0)/rs.length:null,count:rs.length}}).filter(x=>x.avg!==null).sort((a,b)=>b.avg-a.avg)}
+function renderReports(){const c=championData();el("champions").innerHTML=c.length?c.slice(0,10).map((x,i)=>`<div class="item"><div class="split"><strong>${i+1}. ${esc(x.student.name)}</strong><span class="pill">${x.avg.toFixed(2)} / 5</span></div><div class="bar"><span style="width:${x.avg/5*100}%"></span></div><small class="muted">${x.count} تقييمات مسجلة</small></div>`).join(""):'<div class="empty">أضف تقييمات أولًا لعرض فارس الصف.</div>';
+ const dates={};db.attendance.forEach(a=>{dates[a.status]=(dates[a.status]||0)+1});el("attendanceReport").innerHTML=Object.keys(dates).length?Object.entries(dates).map(([k,v])=>`<span class="pill">${esc(k)}: ${v}</span>`).join(""):'<div class="empty">لا توجد سجلات حضور.</div>'}
+function renderStudentReport(){const id=el("reportStudent").value;const s=studentById(id);if(!s){el("studentReport").innerHTML='<div class="empty">اختر تلميذًا.</div>';return}const at=db.attendance.filter(a=>a.studentId===id),rt=db.ratings.filter(r=>r.studentId===id),sc=db.scores.filter(x=>x.studentId===id);el("studentReport").innerHTML=`<div class="section"><h3>${esc(s.name)}</h3><p>${esc(s.grade)} — الشعبة ${esc(s.classroom||"—")}</p><p>ولي الأمر: ${esc(s.guardian||"—")} — الهاتف: ${esc(s.phone||"—")}</p><p>الحضور: ${at.filter(a=>a.status==="حاضر").length} حاضر، ${at.filter(a=>a.status==="غائب").length} غائب، ${at.filter(a=>a.status==="متأخر").length} متأخر، ${at.filter(a=>a.status==="إجازة").length} إجازة.</p><p>عدد التقييمات: ${rt.length} — متوسطها: ${rt.length?(rt.map(r=>average(r.values)).filter(v=>v!==null).reduce((a,b)=>a+b,0)/Math.max(1,rt.map(r=>average(r.values)).filter(v=>v!==null).length)).toFixed(2):"لا يوجد"} / 5</p><h3>الدرجات الأكاديمية</h3>${sc.length?sc.map(x=>{const ex=db.exams.find(e=>e.id===x.examId);return `<p>${esc(ex?.title||"امتحان محذوف")}: ${x.score} / ${ex?.max??"—"}</p>`}).join(""):"لا توجد درجات مسجلة."}<h3>الملاحظات العامة</h3><p>${esc(s.notes||"—")}</p></div>`}
+el("showStudentReport").onclick=renderStudentReport;
+function exportCSV(){const rows=[["الاسم","الصف","الشعبة","تاريخ الميلاد","ولي الأمر","الهاتف","ملاحظات"] ,...db.students.map(s=>[s.name,s.grade,s.classroom,s.birth,s.guardian,s.phone,s.notes])];const csv="\uFEFF"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");downloadBlob(csv,"الصف-الذهبي-التلاميذ.csv","text/csv;charset=utf-8")}
+el("exportCsv").onclick=exportCSV;
+function downloadBlob(content,name,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+function exportBackup(){const payload={app:"الصف الذهبي",version:1,exportedAt:new Date().toISOString(),data:db};downloadBlob(JSON.stringify(payload,null,2),"الصف-الذهبي-نسخة-"+today()+".json","application/json;charset=utf-8")}
+el("backupExport").onclick=exportBackup;el("backupImportBtn").onclick=()=>el("backupFile").click();
+el("backupFile").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const p=JSON.parse(await f.text());if(p.app!=="الصف الذهبي"||p.version!==1||!p.data||!Array.isArray(p.data.students))throw new Error("صيغة النسخة غير معتمدة.");if(!confirm("سيتم استبدال كل البيانات الحالية. هل صدّرت نسخة حديثة من البيانات الحالية؟"))return;const d=p.data;for(const k of Object.keys(db)){if(k==="settings")db.settings={...db.settings,...(d.settings||{})};else db[k]=Array.isArray(d[k])?d[k]:[]}if(!persist())return;refresh();alert("تمت استعادة النسخة الاحتياطية.")}catch(err){alert("فشل الاستيراد: "+err.message)}finally{e.target.value=""}};
+el("saveSettings").onclick=()=>{db.settings.schoolName=el("schoolName").value.trim();db.settings.notes=el("settingsNotes").value.trim();if(persist())alert("تم حفظ الإعدادات.")};
+el("clearAll").onclick=()=>{if(!confirm("تحذير: سيُحذف كل التلاميذ والحضور والتقييمات والدروس والواجبات والدرجات نهائيًا من التخزين المحلي. هل صدّرت نسخة احتياطية وتريد المتابعة؟"))return;const old=db;db={students:[],attendance:[],ratings:[],lessons:[],homework:[],exams:[],scores:[],settings:{schoolName:"مدرسة الأنفال الابتدائية",notes:""}};if(!persist()){db=old;return}refresh();alert("تم مسح البيانات.")};
+function renderHome(){el("statStudents").textContent=db.students.length;el("statPresent").textContent=db.attendance.filter(a=>a.date===today()&&a.status==="حاضر").length;el("statRatings").textContent=db.ratings.length;el("statHomework").textContent=db.homework.length;
+ const now=new Date();const bdays=db.students.filter(s=>s.birth).map(s=>{const [y,m,d]=s.birth.split("-").map(Number);let next=new Date(now.getFullYear(),m-1,d);if(next<new Date(now.getFullYear(),now.getMonth(),now.getDate()))next.setFullYear(now.getFullYear()+1);return {s,next,days:Math.round((next-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/86400000)}}).filter(x=>x.days<=30).sort((a,b)=>a.days-b.days);
+ el("birthdays").innerHTML=bdays.length?bdays.map(x=>`<div class="item">${esc(x.s.name)} — ${x.days===0?"عيد ميلاده اليوم":"بعد "+x.days+" يوم"} (${String(x.next.getMonth()+1).padStart(2,"0")}/${String(x.next.getDate()).padStart(2,"0")})</div>`).join(""):'<div class="muted">لا توجد أعياد ميلاد مسجلة خلال الثلاثين يومًا القادمة.</div>';
+ const missing=db.students.filter(s=>!db.attendance.some(a=>a.studentId===s.id&&a.date===today()));el("homeNotices").textContent=missing.length?`لم يُسجّل حضور ${missing.length} تلميذًا اليوم.`:"تم تسجيل الحضور لجميع التلاميذ أو لا يوجد تلاميذ."}
+function refresh(){renderHome();renderStudents();renderAttendance();selectOptions("rateStudent",el("rateStudent").value);selectOptions("reportStudent",el("reportStudent").value);renderRatingFields();renderRatings();renderLessons();renderHomework();renderExams();renderReports();el("schoolName").value=db.settings.schoolName||"";el("settingsNotes").value=db.settings.notes||"";el("storageInfo").textContent="عدد التلاميذ: "+db.students.length+" — سجلات الحضور: "+db.attendance.length+" — التقييمات: "+db.ratings.length}
+function editItem(type,id){
+ if(type==="student"){const s=studentById(id);if(!s)return;el("studentId").value=s.id;el("sName").value=s.name;el("sGrade").value=s.grade;el("sClass").value=s.classroom||"";el("sBirth").value=s.birth||"";el("sGuardian").value=s.guardian||"";el("sPhone").value=s.phone||"";el("sHealth").value=s.health||"";el("sCulture").value=s.culture||"";el("sSkills").value=s.skills||"";el("sNotes").value=s.notes||"";el("studentFormTitle").textContent="تعديل بيانات التلميذ";go("students");return}
+ const config={rating:["ratings","rating"],lesson:["lessons","lesson"],homework:["homework","homework"],exam:["exams","exam"]}[type];if(!config)return;const record=db[config[0]].find(x=>x.id===id);if(!record)return;
+ if(type==="rating"){el("rateStudent").value=record.studentId;el("rateDate").value=record.date;ratingValues={...record.values};el("rateNotes").value=record.notes||"";renderRatingFields();go("ratings")}
+ if(type==="lesson"){el("lessonId").value=id;el("lDate").value=record.date;el("lGrade").value=record.grade;el("lTitle").value=record.title;el("lSubject").value=record.subject;el("lGoals").value=record.goals;el("lPlan").value=record.plan;el("lNotes").value=record.notes;go("lessons")}
+ if(type==="homework"){el("hwId").value=id;el("hwTitle").value=record.title;el("hwSubject").value=record.subject;el("hwDate").value=record.date;el("hwDue").value=record.due;el("hwGrade").value=record.grade;el("hwDetails").value=record.details;go("homework")}
+ if(type==="exam"){el("examId").value=id;el("eTitle").value=record.title;el("eSubject").value=record.subject;el("eDate").value=record.date;el("eMax").value=record.max;el("eGrade").value=record.grade;el("eNotes").value=record.notes;go("exams")}
+}
+function deleteItem(type,id){const map={student:["students","التلميذ"],rating:["ratings","التقييم"],lesson:["lessons","الدرس"],homework:["homework","الواجب"],exam:["exams","الامتحان"]};if(!map[type])return;const [key,label]=map[type];if(!confirm("هل تريد حذف "+label+"؟"))return;const old=db[key];db[key]=old.filter(x=>x.id!==id);if(type==="student"){db.attendance=db.attendance.filter(x=>x.studentId!==id);db.ratings=db.ratings.filter(x=>x.studentId!==id);db.scores=db.scores.filter(x=>x.studentId!==id)}if(type==="exam")db.scores=db.scores.filter(x=>x.examId!==id);if(!persist()){db[key]=old;return}refresh()}
+load();
+el("attDate").value=today();el("rateDate").value=today();el("lDate").value=today();el("hwDate").value=today();el("eDate").value=today();
+refresh();
+</script>
+</body>
+</html>
